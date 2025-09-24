@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reverse Number & Palindrome Check</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    main {
+      background: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      text-align: center;
+      width: 360px;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    main:hover {
+      transform: scale(1.02);
+    }
+
+    h1 {
+      color: #444;
+      font-size: 22px;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 18px;
+      border: 1px solid #bbb;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+      transition: border 0.3s;
+    }
+
+    input[type="number"]:focus {
+      border: 1px solid #ff4081;
+    }
+
+    button {
+      background: linear-gradient(to right, #ff4081, #e91e63);
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      width: 100%;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #e91e63, #ff4081);
+      transform: translateY(-2px);
+    }
+
+    #result1 {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 17px;
+      color: #333;
+      min-height: 40px;
+    }
+  </style>
+
+  <script>
+    // Reverse number
+    function reverseNumber(num) {
+      let reversed = 0;
+      while (num > 0) {
+        let digit = num % 10;
+        reversed = reversed * 10 + digit;
+        num = Math.floor(num / 10);
+      }
+      return reversed;
+    }
+
+    // Check palindrome
+    function checkPalindrome() {
+      let num = document.getElementById("inputNumber").value;
+      if (!num) {
+        document.getElementById("result1").innerHTML = "⚠ Please enter a number!";
+        return;
+      }
+
+      num = parseInt(num);
+      let reversed = reverseNumber(num);
+
+      let message = `🔄 Reversed Number: ${reversed}<br>`;
+      if (num === reversed) {
+        message += "✅ The number is a Palindrome!";
+      } else {
+        message += "❌ The number is NOT a Palindrome!";
+      }
+
+      document.getElementById("result1").innerHTML = message;
+    }
+  </script>
+</head>
+<body>
+  <main>
+    <h1>🔢 Reverse & Palindrome Checker</h1>
+    <input type="number" id="inputNumber" placeholder="Enter a number">
+    <button onclick="checkPalindrome()">Check</button>
+    <p id="result1"></p>
+  </main>
+</body>
+</html>
