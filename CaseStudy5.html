@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Max & Min from User Input</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #FFDEE9, #B5FFFC);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    header, footer {
+      width: 100%;
+      text-align: center;
+      color: white;
+      padding: 15px 0;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    header {
+      background-color: #FF4081;
+      font-size: 24px;
+    }
+
+    footer {
+      background-color: #333;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 350px;
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #2196F3;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #1976D2;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 16px;
+      color: #333;
+      text-align: left;
+    }
+  </style>
+
+  <script>
+    function findMaxMin() {
+      let input = document.getElementById("numbers").value;
+
+      if (!input.trim()) {
+        document.getElementById("result").innerHTML = "⚠ Please enter some numbers!";
+        return;
+      }
+
+      let numbers = input.split(",").map(Number);
+
+      if (numbers.some(isNaN)) {
+        document.getElementById("result").innerHTML = "⚠ Invalid input! Please enter only numbers separated by commas.";
+        return;
+      }
+
+      let maxVal = Math.max(...numbers);
+      let minVal = Math.min(...numbers);
+
+      document.getElementById("result").innerHTML =
+        "<strong>Array:</strong> " + numbers.join(", ") +
+        "<br><strong>Maximum Value:</strong> " + maxVal +
+        "<br><strong>Minimum Value:</strong> " + minVal;
+    }
+  </script>
+</head>
+<body>
+
+  <header>📊 Number Insights Lab 📊</header>
+
+  <div class="container">
+    <h2>Find Maximum & Minimum</h2>
+    <p>Enter numbers separated by commas:</p>
+    <input type="text" id="numbers" placeholder="e.g. 12,45,7,89,23">
+    <button onclick="findMaxMin()">Find</button>
+
+    <div id="result"></div>
+  </div>
+
+  <footer>© 2025 Number Insights Lab</footer>
+
+</body>
+</html>
