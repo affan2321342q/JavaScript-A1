@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SIT Nagpur - Department Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url("Untitled.jpeg") no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+    header {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+    }
+    nav {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 15px;
+      text-align: center;
+    }
+    nav a {
+      color: yellow;
+      text-decoration: none;
+      font-size: 18px;
+      margin: 0 15px;
+      cursor: pointer;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .content {
+      display: none; /* hidden by default */
+      padding: 40px;
+      min-height: calc(100vh - 140px); /* full page minus header+nav */
+      box-sizing: border-box;
+    }
+    .content h2 {
+      margin-top: 0;
+    }
+    .overlay {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    table, th, td {
+      border: 1px solid white;
+      padding: 10px;
+    }
+    th {
+      background-color: rgba(255, 255, 0, 0.7);
+      color: black;
+    }
+    td {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  </style>
+  <script>
+    window.onload = function() {
+      alert("Welcome to SIT Nagpur");
+
+      // Show Home by default
+      document.getElementById("home").style.display = "block";
+
+      // Nav link handler
+      document.querySelectorAll("nav a").forEach(link => {
+        link.addEventListener("click", function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href").substring(1);
+
+          // Hide all sections first
+          document.querySelectorAll(".content").forEach(section => {
+            section.style.display = "none";
+          });
+
+          // Show clicked section
+          const target = document.getElementById(targetId);
+          if (target) {
+            target.style.display = "block";
+          }
+        });
+      });
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>SIT Nagpur - Computer Science Department</h1>
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#college">About College</a>
+    <a href="#about">About Department</a>
+    <a href="#students">Student Information</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- Home Section -->
+  <div id="home" class="content">
+    <div class="overlay">
+      <h2>Welcome to SIT Nagpur</h2>
+      <p>
+        Symbiosis Institute of Technology, Nagpur, is committed to providing high-quality 
+        education and fostering innovation, creativity, and excellence.  
+        Explore our college, learn about our departments, and get to know our students.
+      </p>
+    </div>
+  </div>
+
+  <!-- About College Section -->
+  <div id="college" class="content">
+    <div class="overlay">
+      <h2>About Our College</h2>
+      <p>
+        SIT Nagpur is one of the leading institutes for higher education in technology and 
+        sciences. The college campus offers world-class facilities, state-of-the-art 
+        laboratories, and a vibrant environment for students to excel in both academics and extracurricular activities. 
+      </p>
+      <p>
+        Our vision is to create professionals who are not only technically skilled but also 
+        socially responsible. With a strong emphasis on research and innovation, SIT Nagpur 
+        is shaping future leaders in engineering and technology.
+      </p>
+      <p>
+        The institute also promotes cultural diversity and holistic development through 
+        student clubs, events, and initiatives aimed at nurturing creativity, teamwork, and 
+        leadership skills.
+      </p>
+    </div>
+  </div>
+
+  <!-- About Department Section -->
+  <div id="about" class="content">
+    <div class="overlay">
+      <h2>About Our Department</h2>
+      <p>
+        Welcome to the Department of Computer Science at SIT Nagpur. 
+        Our department focuses on cutting-edge research, innovation, and quality education.  
+        Students here get opportunities to explore Artificial Intelligence, Machine Learning, 
+        Cybersecurity, and other advanced fields of Computer Science.
+      </p>
+    </div>
+  </div>
+
+  <!-- Students Section -->
+  <div id="students" class="content">
+    <div class="overlay">
+      <h2>Student Information</h2>
+      <table>
+        <tr>
+          <th>Roll No</th>
+          <th>Name</th>
+          <th>Year</th>
+          <th>Branch</th>
+        </tr>
+        <tr>
+          <td>101</td>
+          <td>Rahul Sharma</td>
+          <td>3rd Year</td>
+          <td>CSE</td>
+        </tr>
+        <tr>
+          <td>102</td>
+          <td>Priya Verma</td>
+          <td>2nd Year</td>
+          <td>CSE</td>
+        </tr>
+        <tr>
+          <td>103</td>
+          <td>Affan Varshani</td>
+          <td>4th Year</td>
+          <td>CSE</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <div id="contact" class="content">
+    <div class="overlay">
+      <h2>Contact Us</h2>
+      <p>Email: csdept@sitnagpur.edu.in</p>
+      <p>Phone: +91-9876543210</p>
+    </div>
+  </div>
+</body>
+</html>
